@@ -15,13 +15,16 @@ const App = () => {
    //console.log(currencyOptions);
 
    let toAmount ,fromAmount
-   if(amountInFromCurrency){
-     fromAmount= amount
-     toAmount=amount * exchangeRate
-   }else{
-    toAmount = amount
-     fromAmount= amount / exchangeRate
+   if(amount>=0){
+    if(amountInFromCurrency){
+      fromAmount= amount
+      toAmount=amount * exchangeRate
+    }else{
+     toAmount = amount
+      fromAmount= amount / exchangeRate
+    }
    }
+   
 
   useEffect(() => {
    fetch(BASE_URL)
@@ -40,11 +43,14 @@ const App = () => {
   }, [])
   
   useEffect(() => {
-    if (fromCurrency != null && toCurrency != null) {
-      fetch(`${BASE_URL}?base=${fromCurrency}&symbols=${toCurrency}`)
-        .then(res => res.json())
-        .then(data => setExchangeRate(data.rates[toCurrency]))
+    if(amount>0){
+      if (fromCurrency != null && toCurrency != null) {
+        fetch(`${BASE_URL}?base=${fromCurrency}&symbols=${toCurrency}`)
+          .then(res => res.json())
+          .then(data => setExchangeRate(data.rates[toCurrency]))
+      }
     }
+   
   }, [fromCurrency, toCurrency])
 
 
