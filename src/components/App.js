@@ -10,7 +10,7 @@ const App = () => {
    const[fromCurrency , setFromCurrency] =useState();
    const[toCurrency , setToCurrency] =useState();
    const[exchangeRate,setExchangeRate] =useState();
-   const[amount,setAmount]=useState(1);
+   const[amount,setAmount]=useState(0);
    const[amountInFromCurrency,setAmountInFromCurrency]=useState(true); 
    //console.log(currencyOptions);
 
