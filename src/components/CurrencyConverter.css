@@ -1,0 +1,11 @@
+.second{
+    margin-top: 25px;
+}
+select{
+    margin-right: 15px;
+}
+
+input{
+    border: 1px solid #111;
+    border-radius: 4px;
+}
